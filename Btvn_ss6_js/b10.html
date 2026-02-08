@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b10</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        let choice;
+        do {
+            console.log("\n================== MENU ===================");
+            console.log("1. Nhập số phần tử và giá trị các phần tử");
+            console.log("2. In ra các phần tử đang quản lý");
+            console.log("3. In ra các phần tử chẵn, tính tổng và sắp xếp giảm dần");
+            console.log("4. In ra giá trị lớn nhất, nhỏ nhất và vị trí");
+            console.log("5. In ra các số nguyên tố và tính tổng");
+            console.log("6. Nhập một số và đếm số lần xuất hiện");
+            console.log("7. Thêm một phần tử vào vị trí chỉ định");
+            console.log("8. Xóa một phần tử theo giá trị");
+            console.log("9. Sắp xếp mảng tăng hoặc giảm");
+            console.log("0. Thoát");
+            console.log("===========================================");
+            choice = prompt("Lựa chọn của bạn:");
+            switch (choice) {
+                case "1":
+                    let n = Number(prompt("Nhập số phần tử: "));
+                    arr = [];
+                    for (let i = 0; i < n; i++) {
+                        arr[i] = Number(prompt(`Nhập phần tử thứ ${i}: `));
+                    }
+                    break;
+                case "2":
+                    console.log("Mảng hiện tại:");
+                    for (let i = 0; i < arr.length; i++) {
+                        console.log(arr[i]);
+                    }
+                    break;
+                case "3":
+                    let even = [];
+                    let sumEven = 0;
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] % 2 === 0) {
+                            even.push(arr[i]);
+                            sumEven += arr[i];
+                        }
+                    }
+                    even.sort((a, b) => b - a);
+                    console.log("Số chẵn:", even);
+                    console.log("Tổng:", sumEven);
+                    break;
+                case "4":
+                    let max = arr[0];
+                    let min = arr[0];
+                    let maxPos = 0;
+                    let minPos = 0;
+                    for (let i = 1; i < arr.length; i++) {
+                        if (arr[i] > max) {
+                            max = arr[i];
+                            maxPos = i;
+                        }
+                        if (arr[i] < min) {
+                            min = arr[i];
+                            minPos = i;
+                        }
+                    }
+                    console.log("Max:", max, "Vị trí:", maxPos);
+                    console.log("Min:", min, "Vị trí:", minPos);
+                    break;
+                case "5":
+                    let sumPrime = 0;
+                    console.log("Số nguyên tố:");
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] > 1) {
+                            let prime = true;
+                            for (let j = 2; j <= Math.sqrt(arr[i]); j++) {
+                                if (arr[i] % j === 0) {
+                                    prime = false;
+                                    break;
+                                }
+                            }
+                            if (prime) {
+                                console.log(arr[i]);
+                                sumPrime += arr[i];
+                            }
+                        }
+                    }
+                    console.log("Tổng số nguyên tố:", sumPrime);
+                    break;
+                case "6":
+                    let x = Number(prompt("Nhập số cần đếm: "));
+                    let count = 0;
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] === x) count++;
+                    }
+                    console.log(`Số ${x} xuất hiện ${count} lần`);
+                    break;
+                case "7":
+                    let value = Number(prompt("Nhập giá trị cần thêm: "));
+                    let pos = Number(prompt("Nhập vị trí chèn: "));
+                    if (pos >= 0 && pos <= arr.length) {
+                        arr.splice(pos, 0, value);
+                    } else {
+                        console.log("Vị trí không hợp lệ");
+                    }
+                    break;
+                case "8":
+                    let del = Number(prompt("Nhập giá trị cần xóa: "));
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] === del) {
+                            arr.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    break;
+                case "9":
+                    let type = prompt("Nhập 1.Tăng hoặc 2.Giảm: ");
+                    if (type === "1") {
+                        arr.sort((a, b) => a - b);
+                    } else if (type === "2") {
+                        arr.sort((a, b) => b - a);
+                    }
+                    break;
+                case "0":
+                    console.log("Thoát chương trình");
+                    break;
+                default:
+                    console.log("Lựa chọn không hợp lệ");
+            }
+        } while (choice !== "0");
+    </script>
+</body>
+</html>

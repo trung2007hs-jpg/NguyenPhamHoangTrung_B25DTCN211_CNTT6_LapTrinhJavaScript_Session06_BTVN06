@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b5</title>
+</head>
+<body>
+    <script>
+        let n = 5;
+        let arr = ['a', '-2', 'd', '5', 'e'];
+        if (n < 0) {
+            console.log("Số lượng phần tử không được âm");
+        } else if (n === 0) {
+            console.log("Mảng không có phần tử");
+        } else {
+            let tong = 0;
+            let demSo = 0;
+            for (let i = 0; i < n; i++) {
+                let giaTri = Number(arr[i]);
+                if (!isNaN(giaTri)) {
+                    tong += giaTri;
+                    demSo++;
+                }
+            }
+            if (demSo === 0) {
+                console.log("Không có phần tử nào là số");
+            } else {
+                console.log(tong);
+            }
+        }
+    </script>
+</body>
+</html>

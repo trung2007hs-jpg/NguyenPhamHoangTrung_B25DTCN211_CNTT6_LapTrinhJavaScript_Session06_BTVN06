@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b9</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        let choice;
+        do {
+            choice = prompt(
+                "================== MENU ===================\n" +
+                "1. Nhập số phần tử cần nhập và giá trị các phần tử\n" +
+                "2. In ra giá trị các phần tử đang quản lý\n" +
+                "3. In ra giá trị các phần tử chẵn và tính tổng\n" +
+                "4. In ra giá trị lớn nhất và nhỏ nhất trong mảng\n" +
+                "5. In ra các phần tử là số nguyên tố và tính tổng\n" +
+                "6. Nhập vào một số và thống kê số lần xuất hiện\n" +
+                "7. Thêm một phần tử vào vị trí chỉ định\n" +
+                "8. Thoát\n" +
+                "============================================\n" +
+                "Lựa chọn của bạn:");
+            switch (choice) {
+                case "1": {
+                    let n = Number(prompt("Nhập số phần tử:"));
+                    arr = [];
+                    if (n < 0) {
+                        alert("Số lượng phần tử không được nhỏ hơn 0");
+                        break;
+                    }
+                    for (let i = 0; i < n; i++) {
+                        let value = Number(prompt("Nhập phần tử thứ " + (i + 1)));
+                        arr.push(value);
+                    }
+                    alert("Nhập mảng thành công");
+                    break;
+                }
+                case "2": {
+                    if (arr.length === 0) {
+                        alert("Mảng đang rỗng");
+                    } else {
+                        console.log("Các phần tử trong mảng:", arr);
+                    }
+                    break;
+                }
+                case "3": {
+                    let total = 0;
+                    let result = [];
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] % 2 === 0) {
+                            result.push(arr[i]);
+                            total += arr[i];
+                        }
+                    }
+                    console.log("Các số chẵn:", result);
+                    console.log("Tổng các số chẵn:", total);
+                    break;
+                }
+                case "4": {
+                    if (arr.length === 0) {
+                        alert("Mảng đang rỗng");
+                        break;
+                    }
+                    let max = arr[0];
+                    let min = arr[0];
+                    for (let i = 1; i < arr.length; i++) {
+                        if (arr[i] > max) max = arr[i];
+                        if (arr[i] < min) min = arr[i];
+                    }
+                    console.log("Giá trị lớn nhất:", max);
+                    console.log("Giá trị nhỏ nhất:", min);
+                    break;
+                }
+                case "5": {
+                    let total = 0;
+                    let primes = [];
+                    for (let i = 0; i < arr.length; i++) {
+                        let isPrime = true;
+                        if (arr[i] < 2) isPrime = false;
+                        for (let j = 2; j <= Math.sqrt(arr[i]); j++) {
+                            if (arr[i] % j === 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            primes.push(arr[i]);
+                            total += arr[i];
+                        }
+                    }
+                    console.log("Các số nguyên tố:", primes);
+                    console.log("Tổng số nguyên tố:", total);
+                    break;
+                }
+                case "6": {
+                    let x = Number(prompt("Nhập số cần thống kê:"));
+                    let count = 0;
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] === x) {
+                            count++;
+                        }
+                    }
+                    console.log("Số lần xuất hiện của", x, "là:", count);
+                    break;
+                }
+                case "7": {
+                    let value = Number(prompt("Nhập giá trị cần thêm:"));
+                    let index = Number(prompt("Nhập vị trí cần thêm:"));
+                    if (index < 0 || index > arr.length) {
+                        alert("Vị trí không hợp lệ");
+                    } else {
+                        arr.splice(index, 0, value);
+                        console.log("Mảng sau khi thêm:", arr);
+                    }
+                    break;
+                }
+                case "8":
+                    alert("Thoát chương trình");
+                    break;
+                default:
+                    alert("Lựa chọn không hợp lệ");
+            }
+        } while (choice !== "8");
+    </script>
+</body>
+</html>

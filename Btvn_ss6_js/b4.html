@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b4</title>
+</head>
+<body>
+    <script>
+        let n = 4;
+        let arr = ['c', '2', 'd', '3'];
+        if (n === 0) {
+            console.log("Không có ký tự số");
+        } else {
+            let found = false;
+            for (let i = 0; i < n; i++) {
+                if (arr[i] >= '0' && arr[i] <= '9') {
+                    console.log(arr[i]);
+                    found = true;
+                }
+            }
+            if (!found) {
+                console.log("Không có ký tự số");
+            }
+        }
+    </script>
+</body>
+</html>
