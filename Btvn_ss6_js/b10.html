@@ -10,19 +10,20 @@
         let arr = [];
         let choice;
         do {
-            console.log("\n================== MENU ===================");
-            console.log("1. Nhập số phần tử và giá trị các phần tử");
-            console.log("2. In ra các phần tử đang quản lý");
-            console.log("3. In ra các phần tử chẵn, tính tổng và sắp xếp giảm dần");
-            console.log("4. In ra giá trị lớn nhất, nhỏ nhất và vị trí");
-            console.log("5. In ra các số nguyên tố và tính tổng");
-            console.log("6. Nhập một số và đếm số lần xuất hiện");
-            console.log("7. Thêm một phần tử vào vị trí chỉ định");
-            console.log("8. Xóa một phần tử theo giá trị");
-            console.log("9. Sắp xếp mảng tăng hoặc giảm");
-            console.log("0. Thoát");
-            console.log("===========================================");
-            choice = prompt("Lựa chọn của bạn:");
+            choice = prompt(
+                "================== MENU ===================\n" +
+                "1. Nhập số phần tử và giá trị các phần tử\n" +
+                "2. In ra các phần tử đang quản lý\n" +
+                "3. In ra các phần tử chẵn, tính tổng và sắp xếp giảm dần\n" +
+                "4. In ra giá trị lớn nhất, nhỏ nhất và vị trí\n" +
+                "5. In ra các số nguyên tố và tính tổng\n" +
+                "6. Nhập một số và đếm số lần xuất hiện\n" +
+                "7. Thêm một phần tử vào vị trí chỉ định\n" +
+                "8. Xóa một phần tử theo giá trị\n" +
+                "9. Sắp xếp mảng tăng hoặc giảm\n" +
+                "0. Thoát\n" +
+                "===========================================\n" +
+                "Lựa chọn của bạn:")
             switch (choice) {
                 case "1":
                     let n = Number(prompt("Nhập số phần tử: "));
