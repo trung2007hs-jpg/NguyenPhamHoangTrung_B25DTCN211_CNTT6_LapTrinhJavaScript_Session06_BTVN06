@@ -23,7 +23,7 @@
                 "9. Sắp xếp mảng tăng hoặc giảm\n" +
                 "0. Thoát\n" +
                 "===========================================\n" +
-                "Lựa chọn của bạn:")
+                "Lựa chọn của bạn:");
             switch (choice) {
                 case "1":
                     let n = Number(prompt("Nhập số phần tử: "));
@@ -31,6 +31,7 @@
                     for (let i = 0; i < n; i++) {
                         arr[i] = Number(prompt(`Nhập phần tử thứ ${i}: `));
                     }
+                    alert("Nhập mảng thành công!");
                     break;
                 case "2":
                     console.log("Mảng hiện tại:");
@@ -48,10 +49,14 @@
                         }
                     }
                     even.sort((a, b) => b - a);
-                    console.log("Số chẵn:", even);
-                    console.log("Tổng:", sumEven);
+                    console.log("Các số chẵn (giảm dần):", even);
+                    console.log("Tổng số chẵn:", sumEven);
                     break;
                 case "4":
+                    if (arr.length === 0) {
+                        alert("Mảng đang rỗng!");
+                        break;
+                    }
                     let max = arr[0];
                     let min = arr[0];
                     let maxPos = 0;
@@ -71,17 +76,17 @@
                     break;
                 case "5":
                     let sumPrime = 0;
-                    console.log("Số nguyên tố:");
+                    console.log("Các số nguyên tố:");
                     for (let i = 0; i < arr.length; i++) {
                         if (arr[i] > 1) {
-                            let prime = true;
+                            let isPrime = true;
                             for (let j = 2; j <= Math.sqrt(arr[i]); j++) {
                                 if (arr[i] % j === 0) {
-                                    prime = false;
+                                    isPrime = false;
                                     break;
                                 }
                             }
-                            if (prime) {
+                            if (isPrime) {
                                 console.log(arr[i]);
                                 sumPrime += arr[i];
                             }
@@ -95,39 +100,51 @@
                     for (let i = 0; i < arr.length; i++) {
                         if (arr[i] === x) count++;
                     }
-                    console.log(`Số ${x} xuất hiện ${count} lần`);
+                    alert(`Số ${x} xuất hiện ${count} lần`);
                     break;
                 case "7":
                     let value = Number(prompt("Nhập giá trị cần thêm: "));
                     let pos = Number(prompt("Nhập vị trí chèn: "));
                     if (pos >= 0 && pos <= arr.length) {
                         arr.splice(pos, 0, value);
+                        alert("Thêm phần tử thành công!");
                     } else {
-                        console.log("Vị trí không hợp lệ");
+                        alert("Vị trí không hợp lệ!");
                     }
                     break;
                 case "8":
                     let del = Number(prompt("Nhập giá trị cần xóa: "));
+                    let found = false;
                     for (let i = 0; i < arr.length; i++) {
                         if (arr[i] === del) {
                             arr.splice(i, 1);
                             i--;
+                            found = true;
                         }
+                    }
+                    if (found) {
+                        alert("Đã xóa phần tử!");
+                    } else {
+                        alert("Không tìm thấy giá trị cần xóa!");
                     }
                     break;
                 case "9":
-                    let type = prompt("Nhập 1.Tăng hoặc 2.Giảm: ");
+                    let type = prompt("Nhập 1 để sắp xếp tăng, 2 để sắp xếp giảm:");
                     if (type === "1") {
                         arr.sort((a, b) => a - b);
+                        alert("Đã sắp xếp tăng dần!");
                     } else if (type === "2") {
                         arr.sort((a, b) => b - a);
+                        alert("Đã sắp xếp giảm dần!");
+                    } else {
+                        alert("Lựa chọn không hợp lệ!");
                     }
                     break;
                 case "0":
-                    console.log("Thoát chương trình");
+                    alert("Thoát chương trình!");
                     break;
                 default:
-                    console.log("Lựa chọn không hợp lệ");
+                    alert("Lựa chọn không hợp lệ!");
             }
         } while (choice !== "0");
     </script>
